@@ -1,0 +1,11 @@
+[package]
+name = "peer-dependencies"
+version = "0.1.0"
+authors = ["Keith Raymond <raymondke99@gmail.com>"]
+
+[dependencies]
+termion = "1"
+regex   = "0.2"
+serde   = "1.0.19"
+serde_derive = "1.0.19"
+serde_json = "1.0.6"

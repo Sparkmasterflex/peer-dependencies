@@ -1,0 +1,49 @@
+{
+  "name": "marxjs",
+  "version": "0.4.2",
+  "description": "Something",
+  "main": "marx.js",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack -p --config ./webpack.production.config.js --progress --profile --colors",
+    "watch": "webpack --watch -p --config ./webpack.production.config.js --progress --profile --colors"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sparkmasterflex/marx-js.git"
+  },
+  "author": "Keith Raymond (raymondke99@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sparkmasterflex/marx-js/issues"
+  },
+  "homepage": "https://github.com/Sparkmasterflex/marx-js#readme",
+  "peerDependencies": {
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "lodash": "^3.9.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "browser-sync": "^2.18.8",
+    "browser-sync-webpack-plugin": "^1.1.4",
+    "coffee-loader": "^0.7.3",
+    "coffee-script": "^1.12.5",
+    "css-loader": "^0.28.1",
+    "riot": "^3.0.7",
+    "riot-tag-loader": "^1.0.0",
+    "style-loader": "^0.17.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}
