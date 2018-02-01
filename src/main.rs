@@ -28,21 +28,30 @@ fn main() {
     reset = color::Fg(color::Reset)
   );
 
-  let current_directory = env::current_dir().unwrap().display().to_string();
+  let current_directory = env::current_dir()
+    .expect("current directory is wrong")
+    .display().to_string();
+
 
   let mut file = match File::open("package.json") {
     Err(why) => panic!("couldn't read package.json: {:?}", why),
     Ok(file) => file,
-  }; //.unwrap();
+  };
   let mut data = String::new();
-  file.read_to_string(&mut data).unwrap();
+  file.read_to_string(&mut data)
+    .expect("cannot read file to string");
 
-  let json: Value = serde_json::from_str(&data).unwrap();
+  let json: Value = serde_json::from_str(&data)
+    .expect("serde_json what? from what?");
   let mut packages = vec![];
 
-  for obj in json["peerDependencies"].as_object().unwrap() {
-    let re    = Regex::new(r####"""####).unwrap();
-    let no_at = Regex::new(r"\^").unwrap();
+  for obj in json["peerDependencies"].as_object()
+    .expect("as_object is all fucked up")
+  {
+    let re    = Regex::new(r####"""####)
+      .expect("re Regex::new not working");
+    let no_at = Regex::new(r"\^")
+      .expect("no_at Regex::new not working");
 
     let v1 = obj.1.to_string();
     let v2 = re.replace_all(&v1, "");
