@@ -42,6 +42,8 @@ fn main() {
 
         packages.push(format!("{}{}", obj.0, version));
       }
+
+      packages.push(String::from("--no-save"));
       println!("npm install {}", packages.iter().cloned().collect::<String>());
       let args = &packages[..];
 
@@ -92,3 +94,4 @@ fn print_block(msg: &str) {
     reset = color::Fg(color::Reset)
   );
 }
+
