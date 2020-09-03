@@ -44,6 +44,6 @@
     "webpack": "^2.4.1"
   },
   "dependencies": {
-    "jquery": "^2.2.3"
+    "jquery": "^3.5.1"
   }
 }
