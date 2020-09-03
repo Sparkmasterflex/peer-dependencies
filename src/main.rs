@@ -22,12 +22,15 @@ fn main() {
   file.read_to_string(&mut data)
     .expect("cannot read file to string");
 
+  println!("{:?}", &data);
   let json: Value = serde_json::from_str(&data)
     .expect("serde_json what? from what?");
   let mut packages = vec![];
 
   match json["peerDependencies"].as_object() {
     Some(peer_dependencies) => {
+      let mut version: String;
+
       print_block("Installing Peer Dependencies");
 
       for obj in peer_dependencies {
@@ -38,9 +41,15 @@ fn main() {
 
         let v1 = obj.1.to_string();
         let v2 = re.replace_all(&v1, "");
-        let version = no_at.replace_all(&v2, "@");
+        if no_at.is_match(&v2) {
+          version = no_at.replace_all(&v2, "").to_string();
+        } else {
+          version = v2.to_string();
+        }
 
-        packages.push(format!("{}{}", obj.0, version));
+        println!("{:?}@{}", obj.0, version);
+
+        packages.push(format!("{}@{} ", obj.0, version));
       }
 
       packages.push(String::from("--no-save"));
